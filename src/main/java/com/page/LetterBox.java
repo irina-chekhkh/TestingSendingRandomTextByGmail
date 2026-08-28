@@ -69,7 +69,6 @@ public class LetterBox extends AbstractPage {
                 By.xpath("//div[@role='textbox']//div")
         ).getText();
 
-        Letter letter = new Letter(receiver, title, text);
-        return letter;
+        return new Letter(receiver, title, text);
     }
 }

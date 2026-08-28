@@ -13,7 +13,6 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import java.lang.annotation.Retention;
 
 
 public class GmailTest {
@@ -64,8 +63,6 @@ public class GmailTest {
                 .openSentPage()
                 .findLetter(expectedletter)
                 .getLetter();
-
-        int a = -1;
         Assert.assertEquals(letter, expectedletter);
     }
 
