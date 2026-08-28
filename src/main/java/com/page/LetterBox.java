@@ -19,7 +19,7 @@ public class LetterBox extends AbstractPage {
 
     public void addReceiver(String receiver) {
         WebElement input = wait.until(
-                ExpectedConditions.presenceOfElementLocated(
+                ExpectedConditions.visibilityOfElementLocated(
                         By.cssSelector("div[name=to] input")
                 ));
         input.sendKeys(receiver);

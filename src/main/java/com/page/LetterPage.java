@@ -15,7 +15,7 @@ public class LetterPage extends AbstractPage{
 
         String receiver= wait.until(
                 ExpectedConditions.visibilityOfElementLocated(
-                        By.xpath("//span[@email and @class='g2']"))).getText();
+                        By.xpath("//span[@email and @class='g2']"))).getAttribute("data-hovercard-id");
 
         String text = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(
