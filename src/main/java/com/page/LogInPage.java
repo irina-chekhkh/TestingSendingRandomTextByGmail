@@ -1,5 +1,6 @@
 package com.page;
 
+import com.component.LoadConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,7 +18,7 @@ public class LogInPage extends AbstractPage {
 
     private void sleep() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(LoadConstants.ANTI_BOT_TIMEOUT);
         } catch (InterruptedException e) {}
     }
 

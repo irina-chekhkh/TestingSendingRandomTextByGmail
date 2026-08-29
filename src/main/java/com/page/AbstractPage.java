@@ -1,5 +1,6 @@
 package com.page;
 
+import com.component.LoadConstants;
 import com.driver.SingletonDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -13,7 +14,7 @@ public abstract class AbstractPage {
 
     protected AbstractPage() {
         this.driver = SingletonDriver.getDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+        wait = new WebDriverWait(driver, Duration.ofMillis(LoadConstants.MAX_TIME_lOAD));
         PageFactory.initElements(driver, this);
     }
 }

@@ -1,37 +1,15 @@
 package com;
 
-import com.component.TextGenerator;
 import com.page.LetterBox;
-import com.driver.SingletonDriver;
 import com.page.DraftPage;
-import com.page.MainPage;
 import com.page.NavigationMenu;
 import com.page.WelcomePage;
 import com.structure.Letter;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 
-
-public class GmailTest {
-
-    private String mail;
-    private String password;
-    private Letter expectedletter;
-
-    @BeforeSuite
-    public void createDriver() {
-        ResourcesDataReader reader = new ResourcesDataReader("email-data");
-        mail = reader.getData("user.email");
-        password = reader.getData("user.password");
-        String receiver = reader.getData("receiver.email");
-        String title = TextGenerator.generateText(1,10);
-        String text = TextGenerator.generateText(0,100);
-        expectedletter = new Letter(receiver,title,text);
-        SingletonDriver.getInstance();
-    }
+public class GmailTest extends BaseTest {
 
     @Test
     public void loginTest() {
@@ -66,9 +44,4 @@ public class GmailTest {
         Assert.assertEquals(letter, expectedletter);
     }
 
-    @AfterSuite
-    public void closeDriver() {
-        new MainPage().logout();
-        SingletonDriver.closeDriver();
-    }
 }

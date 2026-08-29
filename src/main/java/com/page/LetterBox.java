@@ -10,7 +10,7 @@ public class LetterBox extends AbstractPage {
     public LetterBox() {
     }
 
-    public LetterBox fillLetter(Letter letter){
+    public LetterBox fillLetter(Letter letter) {
         addReceiver(letter.getReceiver());
         addTitle(letter.getTitle());
         addText(letter.getText());
@@ -51,15 +51,16 @@ public class LetterBox extends AbstractPage {
     }
 
     public DraftPage sendLetterBox() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@role='button' and text()='Отправить']"))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath("//div[@role='button' and text()='Отправить']"))).click();
         return new DraftPage();
     }
 
     public Letter getLetter() {
         String receiver = wait.until(
-                        ExpectedConditions.presenceOfElementLocated(
-                                By.xpath("//span[@email]")
-                        )).getText();
+                ExpectedConditions.presenceOfElementLocated(
+                        By.xpath("//span[@email]")
+                )).getText();
 
         String title = driver.findElement(
                 By.cssSelector("input[name=subject]")

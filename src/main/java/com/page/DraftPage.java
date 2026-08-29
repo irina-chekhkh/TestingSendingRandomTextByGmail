@@ -1,5 +1,6 @@
 package com.page;
 
+import com.component.LoadConstants;
 import com.structure.Letter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +12,7 @@ public class DraftPage extends AbstractPage {
     }
 
     public LetterBox findLetter(Letter letter){
-        wait.withTimeout(Duration.ofSeconds(3)).until(ExpectedConditions
+        wait.withTimeout(Duration.ofMillis(LoadConstants.MIN_TIME_lOAD)).until(ExpectedConditions
                         .elementToBeClickable(
                                 By.xpath(String.format("//tr[.//*[text()='%s']]",letter.getTitle()))
                         )

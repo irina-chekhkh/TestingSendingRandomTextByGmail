@@ -22,8 +22,8 @@ public class MainPage extends AbstractPage {
         return new NavigationMenu();
     }
 
-    public void logout() {
-        driver.findElement(By.xpath("//a[contains(@aria-label,'ilrissia.kh@gmail.com')]")).click();
+    public void logout(String email) {
+        driver.findElement(By.xpath(String.format("//a[contains(@aria-label,'%s')]",email))).click();
         WebElement iframe = driver.findElement(By.xpath("//iframe[@name='account']"));
         driver.switchTo().frame(iframe);
         WebElement element = driver.findElement(By.xpath("//a[contains(@href, 'Logout')]"));
