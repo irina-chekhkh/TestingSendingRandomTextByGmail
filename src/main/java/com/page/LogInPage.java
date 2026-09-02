@@ -1,12 +1,13 @@
 package com.page;
 
 import com.component.LoadConstants;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
-public class LogInPage extends AbstractPage {
+public class LogInPage extends BasePage {
 
     public LogInPage() {
     }
@@ -26,14 +27,18 @@ public class LogInPage extends AbstractPage {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
+    @Step("Enter email")
     public LogInPage enterEmail(String email) {
+        logger.info("Entering email and clicking button");
         enterData(By.id("identifierId"), email);
         sleep();
         clickButton(By.xpath("//*[@id=\"identifierNext\"]//button"));
         return this;
     }
 
+    @Step("Enter password")
     public MainPage enterPassword(String password) {
+        logger.info("Entering password and clicking button");
         enterData(By.xpath("//*[@id=\"password\"]//input"), password);
         sleep();
         clickButton(By.xpath("//*[@id=\"passwordNext\"]//button"));

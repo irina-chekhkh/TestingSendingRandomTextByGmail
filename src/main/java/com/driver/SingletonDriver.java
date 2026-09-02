@@ -9,12 +9,12 @@ public class SingletonDriver {
     private SingletonDriver() {
     }
 
-    public static SingletonDriver getInstance() {
+    public static SingletonDriver getInstance(String browser) {
         if (instance == null) {
             instance = new SingletonDriver();
         }
         if (driver == null) {
-            driver = DriverFactory.createDriver();
+            driver = DriverFactory.createDriver(browser);
         }
         return instance;
     }

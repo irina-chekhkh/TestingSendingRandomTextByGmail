@@ -6,16 +6,16 @@ import com.component.TextGenerator;
 import com.driver.SingletonDriver;
 import com.page.MainPage;
 import com.structure.Letter;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 
 public class BaseTest {
     protected String mail;
     protected String password;
     protected Letter expectedletter;
 
-    @BeforeSuite
-    public void setUpTestDataAndDriver() {
+    @Parameters("browser")
+    @BeforeClass
+    public void setUpTestDataAndDriver(String browser) {
         mail = EmailConfig.getEmail();
         password = EmailConfig.getPassword();
 
@@ -31,10 +31,10 @@ public class BaseTest {
 
         expectedletter = new Letter(receiver, title, text);
 
-        SingletonDriver.getInstance();
+        SingletonDriver.getInstance(browser);
     }
 
-    @AfterSuite
+    @AfterClass
     public void closeDriver() {
         new MainPage().logout(mail);
         SingletonDriver.closeDriver();
