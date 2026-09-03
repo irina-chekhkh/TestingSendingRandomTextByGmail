@@ -3,6 +3,7 @@ package com.page;
 import com.structure.Letter;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -62,8 +63,9 @@ public class LetterBox extends BasePage {
     @Step("Send letter")
     public DraftPage sendLetterBox() {
         logger.info("Sending letter");
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//div[@role='button' and text()='Отправить']"))).click();
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@role='button' and text()='Отправить']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", sendButton);
         return new DraftPage();
     }
 
