@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Gmail Suite">
+    <parameter name="browser" value="chrome"/>
+
+    <listeners>
+        <listener class-name="com.TestListener"/>
+    </listeners>
+
+    <test name="Main Tests">
+        <classes>
+            <class name="com.LoginTest">
+                <methods>
+                    <include name="loginWithRightData"/>
+                </methods>
+            </class>
+            <class name="com.SaveLetterTest"/>
+            <class name="com.SendLetterTest"/>
+        </classes>
+    </test>
+
+</suite>

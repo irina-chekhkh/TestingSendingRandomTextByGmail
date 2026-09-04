@@ -6,15 +6,18 @@ import com.component.TextGenerator;
 import com.driver.SingletonDriver;
 import com.page.MainPage;
 import com.structure.Letter;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 public class BaseTest {
     protected String mail;
     protected String password;
-    protected Letter expectedletter;
+    protected static Letter expectedletter;
+    protected static boolean isLogin = false;
 
     @Parameters("browser")
-    @BeforeClass
+    @BeforeTest
     public void setUpTestDataAndDriver(String browser) {
         mail = EmailConfig.getEmail();
         password = EmailConfig.getPassword();
@@ -30,13 +33,14 @@ public class BaseTest {
                 TestConstants.MAX_TEXT_LENGTH);
 
         expectedletter = new Letter(receiver, title, text);
-
         SingletonDriver.getInstance(browser);
     }
 
-    @AfterClass
+    @AfterTest
     public void closeDriver() {
-        new MainPage().logout(mail);
+        if (isLogin) {
+            new MainPage().logout(mail);
+        }
         SingletonDriver.closeDriver();
     }
 }

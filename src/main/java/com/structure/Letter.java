@@ -44,4 +44,13 @@ public class Letter {
     public int hashCode() {
         return Objects.hash(receiver, title, text);
     }
+
+    @Override
+    public String toString() {
+        return "Letter{" +
+                "receiver='" + receiver + '\'' +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
